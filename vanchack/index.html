@@ -1,0 +1,82 @@
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;400;500;700&display=swap" rel="stylesheet">
+<!--    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" rel="stylesheet">
+<!--    <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="style.css">
+    <title>Awesome HTML</title>
+
+    <!-- dev: clear this before submit code -->
+    <script type="text/javascript" src="http://livejs.com/live.js"></script>
+    <!--  end dev  -->
+  </head>
+  <body>
+    <div id="main">
+      <header id="header">
+        <div class="content">
+          <div class="logo">VanHack Events</div>
+          <div class="login">
+            <button class="btn">Login</button>
+            <button style="margin-left: 16px" class="btn btn-primary">Sign Up</button>
+          </div>
+        </div>
+      </header>
+      <section id="hero">
+        <div class="content">
+          <h1>Made for those who do</h1>
+        </div>
+        <div class="filter">
+          <div class="item">
+            <span class="label">
+              Looking for
+            </span>
+            <input class="text-input" type="text" />
+          </div>
+          <div class="item">
+            <span class="label">
+              Category
+            </span>
+            <select class="select">
+              <option value="" disabled selected>Choose</option>
+              <option>MeetUp</option>
+              <option>Leap</option>
+              <option>Recruiting Mission</option>
+              <option>VanHackathon</option>
+              <option>Premium</option>
+              <option>Webinar</option>
+              <option>Open Webinar</option>
+            </select>
+          </div>
+          <div class="item">
+            <span class="label">
+              When
+            </span>
+            <input class="text-input" type="date" />
+          </div>
+        </div>
+      </section>
+      <section id="events">
+        <div class="content">
+          <div class="header">
+            <h2>Upcoming Events</h2>
+            <div class="filter">
+              <div class="item">
+                <span class="label">Weekdays</span>
+              </div>
+              <div class="item">
+                <span class="label">Event Type</span>
+              </div>
+              <div class="item">
+                <span class="label">Any Category</span>
+              </div>
+            </div>
+          </div>
+          <div id="grid" class="grid" />
+        </div>
+      </section>
+    </div>
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/js/fontawesome.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,540 @@
+/*
+ * Created At : 2020-07-19
+ * Author     : Hygor Christian Dias
+ * Github     : https://github.com/hygorchristian
+ * LinkedIn   : https://www.linkedin.com/in/hygor-christian/
+ * Project    : VanHack Challenge
+ * Version    : 1.0.0
+ *
+ */
+
+/*==============================================================================
+CSS SITEMAP >>>>
+
+  01. Variables
+	02. General CSS
+	03. Components
+	04. Header
+	05. Hero
+	06. Events
+
+==============================================================================*/
+
+/*==============================================================================
+    01. Variables
+==============================================================================*/
+
+:root{
+  /* Colors */
+  --bg: #ffffff;
+  --paper: #393A59;
+  --primary: #3C74CF;
+  --primary-light: #3c7bd6;
+  --primary-dark: #3c5ab3;
+  --primary-darker: #112843;
+  --text: #121214;
+  --text-secondary: #86909b;
+  --text-contrast: #ffffff;
+
+  --premium: #fca120;
+
+  /* Dimensions */
+  --content: 900px;
+  --border-radius: 8px;
+}
+
+
+/*==============================================================================
+    02. General CSS
+==============================================================================*/
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Roboto, sans-serif;
+}
+
+body{
+  max-width: 100vw;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-image: var(--bg);
+}
+
+#main{
+  width: 100%;
+  display: grid;
+  grid-template-areas:
+    "header"
+    "hero"
+    "events"
+  ;
+  padding-top: 80px;
+  padding-bottom: 100px;
+}
+
+input, select, textarea{
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+/*==============================================================================
+    03. Components
+==============================================================================*/
+
+/* Button */
+.btn{
+  border: none;
+  height: 40px;
+  border-radius: var(--border-radius);
+  padding: 0 28px;
+  cursor: pointer;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.25px;
+  outline: none;
+  font-weight: 600;
+  background-color: var(--text-contrast);
+  color: var(--text)
+}
+
+.btn:hover{
+  transform: scale(1.03);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, .15);
+}
+
+.btn:active{
+  transform: scale(0.98);
+}
+
+.btn-primary{
+  background-color: var(--primary);
+  color: var(--text-contrast);
+}
+
+.btn-primary:hover{
+  background-color: var(--primary-light);
+  transform: scale(1.03)
+}
+
+.btn-primary:active{
+  background-color: var(--primary-light);
+  transform: scale(0.98);
+}
+
+/* Flip Card */
+/* reference: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_flip_card */
+
+.flip-card{
+  display: flex;
+  background-color: transparent;
+  width: 100%;
+  height: 280px;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border-radius: var(--border-radius);
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.flip-card-front.premium{
+  border: 2px solid var(--premium);
+  box-sizing: border-box;
+}
+
+.flip-card-back.premium{
+  background-color: var(--premium);
+}
+
+.flip-card-back {
+  background-color: var(--primary);
+  transform: rotateY(180deg);
+}
+
+.flip-card-back *{
+  color: var(--text-contrast)
+}
+
+.card-header{
+  width: 100%;
+  height: 160px;
+  background-color: #bfbfbf;
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: darken;
+  padding: 12px 16px;
+  display: flex;
+}
+
+.card-header-content{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 32px;
+  width: 100%;
+}
+
+.card-header .info{
+  display: flex;
+  flex-direction: row;
+}
+
+.card-header .info .round{
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  background-color: white;
+  margin-right: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-content{
+  display: flex;
+  flex-direction: row;
+  padding: 24px 18px;
+}
+
+.card-content .date{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-content .date .month{
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--primary)
+}
+
+.card-content .date .day{
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text)
+}
+
+.card-content .info{
+  margin-left: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-content .info .title{
+  font-size: 14px;
+  font-weight: 800;
+  text-align: left;
+}
+
+.card-content .info .description{
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  margin-top: 16px;
+  text-align: left;
+}
+
+
+
+
+/* Typography */
+
+h1{
+
+}
+
+/* Badge */
+
+.badge{
+  height: 28px;
+  border-radius: 5px;
+  background-color: white;
+  padding: 0 12px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.badge .badge-label{
+  font-size: 12px;
+  font-weight: 800;
+}
+
+/* Input */
+
+.text-input{
+  border-bottom: 1px solid var(--primary);
+  color: var(--text-contrast);
+  font-weight: 400;
+  font-size: 14px;
+  height: 36px;
+}
+
+
+/* Datepicker */
+
+input::-webkit-calendar-picker-indicator {
+  color: white;
+  opacity: 1;
+  fill: white;
+}
+
+
+/* Select */
+
+.select{
+  border-bottom: 1px solid var(--primary);
+  color: var(--text-contrast);
+  font-weight: 400;
+  font-size: 14px;
+  height: 36px;
+}
+
+
+/*==============================================================================
+    04. Header
+==============================================================================*/
+
+#header{
+  grid-area: header;
+  height: 80px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  background-color: var(--bg);
+}
+
+#header .content{
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: var(--content);
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo{
+  color: #21AAEB;
+  font-weight: 800;
+  font-size: 24px;
+}
+
+
+/*==============================================================================
+    05. Hero
+==============================================================================*/
+
+#hero{
+  grid-area: hero;
+  width: 100%;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin-bottom: 100px;
+}
+
+#hero .content{
+  width: calc(var(--content) * 1.25);
+  height: 100%;
+  border-radius: var(--border-radius);
+  background-image: url('https://miro.medium.com/max/800/1*1FmOPK6SEAyOHxR6Iozhaw.jpeg');
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+#hero .content h1{
+  width: 260px;
+  color: var(--text-contrast);
+  font-size: 55px;
+  margin-right: 100px;
+}
+
+#hero .filter{
+  height: 90px;
+  width: var(--content);
+  background-color: var(--primary-darker);
+  position: absolute;
+  bottom: -45px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: var(--border-radius);
+}
+
+#hero .filter .item{
+  flex:1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 24px;
+}
+
+#hero .filter .item:not(:last-child){
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+#hero .filter .item .label{
+  color: var(--text-contrast);
+  font-size: 10px;
+  letter-spacing: 1.11px;
+  font-weight: 600;
+  font-family: Roboto, sans-serif;
+}
+
+#hero .filter .item input, #hero .filter .item select{
+  margin-top: 8px;
+}
+
+
+/*==============================================================================
+    06. Events
+==============================================================================*/
+
+#events{
+  grid-area: events;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+#events .content{
+  width: var(--content);
+  display: flex;
+  flex-direction: column;
+}
+
+#events .content .header{
+  height: 170px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#events .content .header h2{
+  font-size: 36px;
+  color: var(--text)
+}
+
+#events .content .header .filter{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#events .content .header .filter .item{
+  height: 40px;
+  width: 120px;
+  border-radius: var(--border-radius);
+  background-color: #efeff4;
+  margin-right: 18px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+#events .content .header .filter .item .label{
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+#events .content .grid{
+  width: 100%;
+  display: grid;
+  grid-column-gap: 24px;
+  grid-row-gap: 40px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/*==============================================================================
+    07. Custom
+==============================================================================*/
+
+
+/* Custom Items */
+
+.round.premium{
+  background-color: rgba(58, 58, 58, 0.6) !important;
+}
+
+.badge.premium{
+  background-color: var(--premium);
+  color: #ffffff;
+  font-weight: 800;
+}
+
+.round.premium .label{
+  color: #ffffff;
+}
+
+.round.highlight, .badge.highlight{
+  background-color: var(--primary) !important;
+  color: #ffffff;
+  font-weight: 800;
+}
+
+.round.highlight .label{
+  color: #ffffff;
+}
+
+.month.premium{
+  color: var(--premium) !important;
+}
+
+
+
+/* Font Awesome */
+
+.fas{
+  color: #595b71;
+}
+
+.fa-crown{
+  color: var(--premium);
+}
+
+.fa-code, .fa-running{
+  color: white;
+}
+
