@@ -46,5 +46,13 @@
     "type": "premium_webinar",
     "image": "https://image.freepik.com/fotos-gratis/webinar-homem-mao-na-mesa-de-negocios_36325-2273.jpg",
     "url": ""
+  },
+  {
+    "deadline": "20-06-12",
+    "title": "sdsdd",
+    "description": "",
+    "type": "recruiting",
+    "image": "https://specials-images.forbesimg.com/imageserve/862718314/960x0.jpg?cropX1=11&cropX2=5331&cropY1=0&cropY2=2660",
+    "url": ""
   }
 ]

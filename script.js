@@ -89,7 +89,8 @@ function generateCard(data) {
 
 async function loadItems() {
   const grid = document.getElementById('grid');
-  const res = await fetch('https://raw.githubusercontent.com/hygorchristian/vanhack-events/master/mock.json');
+  // const res = await fetch('https://raw.githubusercontent.com/hygorchristian/vanhack-events/master/mock.json');
+  const res = await fetch('mock.json');
   const mock = await res.json();
 
   mock.forEach(item => {
