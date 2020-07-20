@@ -99,6 +99,15 @@ async function loadItems() {
   })
 }
 
+function showSuccessMessage() {
+  Swal.fire({
+    icon: 'success',
+    title: 'Your work has been saved',
+    showConfirmButton: false,
+    variant: 'error'
+  })
+}
+
 (function () {
   loadItems()
 })()
