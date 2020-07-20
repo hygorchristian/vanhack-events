@@ -2,7 +2,7 @@
  * Created At : 2020-07-19
  * Author     : Hygor Christian Dias
  * Github     : https://github.com/hygorchristian
- * LinkedIn   : https://www.linkedin.com/in/hygor-christian/
+ * LinkedIn   : https://github.com/hygorchristian/vanhack-events
  * Project    : VanHack Challenge
  * Version    : 1.0.0
  *
@@ -12,11 +12,11 @@
 CSS SITEMAP >>>>
 
   01. Variables
-	02. General CSS
-	03. Components
-	04. Header
-	05. Hero
-	06. Events
+  02. General CSS
+  03. Components
+  04. Header
+  05. Hero
+  06. Events
 
 ==============================================================================*/
 
@@ -59,7 +59,7 @@ body{
   max-width: 100vw;
   overflow-x: hidden;
   overflow-y: auto;
-  background-image: var(--bg);
+  background-color: var(--bg);
 }
 
 #main{
