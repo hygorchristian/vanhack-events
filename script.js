@@ -87,14 +87,15 @@ function generateCard(data) {
   return card;
 }
 
-function loadItems() {
+async function loadItems() {
   const grid = document.getElementById('grid');
-  for(let i = 0; i < 12; i++){
-    mock.forEach(item => {
-      const card = generateCard(item);
-      grid.appendChild(card);
-    })
-  }
+  const res = await fetch('https://raw.githubusercontent.com/hygorchristian/vanhack-events/master/mock.json');
+  const mock = await res.json();
+
+  mock.forEach(item => {
+    const card = generateCard(item);
+    grid.appendChild(card);
+  })
 }
 
 (function () {
