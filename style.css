@@ -32,14 +32,15 @@ CSS SITEMAP >>>>
   --primary-light: #3c7bd6;
   --primary-dark: #3c5ab3;
   --primary-darker: #112843;
-  --text: #121214;
+  --text: #545454;
   --text-secondary: #86909b;
   --text-contrast: #ffffff;
 
   --premium: #fca120;
+  --premium-light: #ffb536;
 
   /* Dimensions */
-  --content: 900px;
+  --content: 1000px;
   --border-radius: 8px;
 }
 
@@ -78,6 +79,10 @@ input, select, textarea{
   background-color: transparent;
   border: none;
   outline: none;
+}
+
+.ml-8{
+  margin-left: 8px;
 }
 
 /*==============================================================================
@@ -124,6 +129,21 @@ input, select, textarea{
   transform: scale(0.98);
 }
 
+.btn-premium{
+  background-color: var(--premium);
+  color: var(--text-contrast);
+}
+
+.btn-premium:hover{
+  background-color: var(--premium-light);
+  transform: scale(1.03)
+}
+
+.btn-premium:active{
+  background-color: var(--premium-light);
+  transform: scale(0.98);
+}
+
 /* Flip Card */
 /* reference: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_flip_card */
 
@@ -131,7 +151,7 @@ input, select, textarea{
   display: flex;
   background-color: transparent;
   width: 100%;
-  height: 280px;
+  height: 300px;
   perspective: 1000px;
 }
 
@@ -172,10 +192,45 @@ input, select, textarea{
 .flip-card-back {
   background-color: var(--primary);
   transform: rotateY(180deg);
+  padding: 20px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
 }
 
 .flip-card-back *{
   color: var(--text-contrast)
+}
+
+.flip-card-back .info{
+  display: flex;
+  flex-direction: column;
+}
+
+.flip-card-back .info .title{
+  font-size: 16px;
+  line-height: 18px;
+  font-weight: 600;
+  text-align: left;
+}
+
+.flip-card-back .info .description{
+  margin-top: 16px;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 400;
+  text-align: left;
+}
+
+.flip-card-back button{
+  width: 100%;
+  color: var(--primary);
+}
+
+.flip-card-back.premium button{
+  width: 100%;
+  color: var(--premium);
 }
 
 .card-header{
@@ -218,7 +273,7 @@ input, select, textarea{
 .card-content{
   display: flex;
   flex-direction: row;
-  padding: 24px 18px;
+  padding: 16px 18px;
 }
 
 .card-content .date{
@@ -249,6 +304,7 @@ input, select, textarea{
   font-size: 14px;
   font-weight: 800;
   text-align: left;
+  color: var(--text);
 }
 
 .card-content .info .description{
@@ -258,8 +314,6 @@ input, select, textarea{
   margin-top: 16px;
   text-align: left;
 }
-
-
 
 
 /* Typography */
@@ -537,7 +591,7 @@ input::-webkit-calendar-picker-indicator {
   color: var(--premium);
 }
 
-.fa-code, .fa-running{
+.fa-code, .fa-running, .fa-search{
   color: white;
 }
 
