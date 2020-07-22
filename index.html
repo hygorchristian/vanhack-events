@@ -1,122 +1,182 @@
 <html>
-  <head>
-    <link
+<head>
+  <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;400;500;700&display=swap"
       rel="stylesheet"
-    />
-    <link
+  />
+  <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
       rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <title>Awesome HTML</title>
+  />
+  <link rel="stylesheet" href="style.css"/>
+  <title>Awesome HTML</title>
 
-    <!-- dev: clear this before submit code -->
-    <script type="text/javascript" src="http://livejs.com/live.js"></script>
-    <!--  end dev  -->
-  </head>
-  <body>
-    <div id="main">
-      <header id="header">
-        <div class="content">
-          <div class="logo">VanHack Events</div>
-          <div class="login">
-            <button class="btn">Login</button>
-            <button
-              style="margin-left: 16px;"
-              class="btn btn-primary"
-              onclick="showSuccessMessage()"
-            >
-              Sign Up
-            </button>
-          </div>
-        </div>
-      </header>
-      <section id="hero">
-        <div class="content">
-          <h1>Made for those who do</h1>
-        </div>
-        <div class="filter">
-          <div class="item">
+  <!-- dev: clear this before submit code -->
+  <script type="text/javascript" src="http://livejs.com/live.js"></script>
+  <!--  end dev  -->
+</head>
+<body>
+<div id="main">
+  <header id="header">
+    <div class="content">
+      <div class="logo">VanHack Events</div>
+      <div class="login">
+        <button class="btn">Login</button>
+        <button class="btn btn-primary">
+          Sign Up
+        </button>
+      </div>
+    </div>
+  </header>
+  <section id="hero">
+    <div class="content">
+      <h1>Made for those who do</h1>
+    </div>
+    <div class="filter">
+      <div class="item">
             <span class="label">
               Looking for
             </span>
-            <input id="filter-query" class="text-input" type="text" />
-          </div>
-          <div class="item">
+        <input id="filter-query" class="text-input" type="text"/>
+      </div>
+      <div class="item">
             <span class="label">
               Category
             </span>
-            <select id="filter-type" class="select">
-              <option value="" disabled selected>Choose</option>
-              <option value="meetup">MeetUp</option>
-              <option value="leap">Leap</option>
-              <option value="recruiting">Recruiting Mission</option>
-              <option value="vanhackathon">VanHackathon</option>
-              <option value="premium_webinar">Premium Webinar</option>
-              <option value="webinar">Open Webinar</option>
-            </select>
-          </div>
-          <div class="item">
+        <select id="filter-type" class="select">
+          <option value="" disabled selected>Choose</option>
+          <option value="meetup">MeetUp</option>
+          <option value="leap">Leap</option>
+          <option value="recruiting">Recruiting Mission</option>
+          <option value="vanhackathon">VanHackathon</option>
+          <option value="premium_webinar">Premium Webinar</option>
+          <option value="webinar">Open Webinar</option>
+        </select>
+      </div>
+      <div class="item">
             <span class="label">
               When
             </span>
-            <input id="filter-date" class="text-input" type="date" />
-          </div>
-        </div>
-      </section>
-      <section id="events">
-        <div class="content">
-          <div class="header">
-            <h2>Upcoming Events</h2>
-            <div class="filter">
-              <div class="item">
-                <span class="label">Weekdays</span>
-              </div>
-              <div class="item">
-                <span class="label">Event Type</span>
-              </div>
-              <div class="item">
-                <span class="label">Any Category</span>
-              </div>
-            </div>
-          </div>
-          <div id="grid" class="grid" />
-        </div>
-      </section>
+        <input id="filter-date" class="text-input" type="date"/>
+      </div>
     </div>
-    <script>
-      const metadata = {
-        meetup: {
-          name: "MeetUp",
-        },
-        leap: {
-          name: "Leap",
-          class: "highlight",
-          icon: "running",
-        },
-        recruiting: {
-          name: "Recruiting Mission",
-          class: "highlight",
-          icon: "search",
-        },
-        vanhackathon: {
-          name: "VanHackathon",
-          class: "highlight",
-          icon: "code",
-        },
-        webinar: {
-          name: "Webinar",
-        },
-        premium_webinar: {
-          name: "Premium Webinar",
-          class: "premium",
-          icon: "crown",
-          subscribe: "premiumSubscribe()",
-        },
-      };
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-    <script src="script.js"></script>
-  </body>
+  </section>
+  <section id="events">
+    <div class="content">
+      <div class="header">
+        <h2>Upcoming Events</h2>
+        <div class="filter">
+          <div class="item">
+            <span class="label">Weekdays</span>
+          </div>
+          <div class="item">
+            <span class="label">Event Type</span>
+          </div>
+          <div class="item">
+            <span class="label">Any Category</span>
+          </div>
+        </div>
+      </div>
+      <div id="grid" class="grid"/>
+    </div>
+  </section>
+</div>
+<!--  Meta data to use in cards  -->
+<script>
+  const metadata = {
+    meetup: {
+      name: "MeetUp",
+      subscribe: 'checkout'
+    },
+    leap: {
+      name: "Leap",
+      class: "highlight",
+      icon: "running",
+      subscribe: 'checkout'
+    },
+    recruiting: {
+      name: "Recruiting Mission",
+      class: "highlight",
+      icon: "search",
+      subscribe: 'checkout'
+    },
+    vanhackathon: {
+      name: "VanHackathon",
+      class: "highlight",
+      icon: "code",
+      subscribe: 'checkout'
+    },
+    webinar: {
+      name: "Webinar",
+      subscribe: 'checkout'
+    },
+    premium_webinar: {
+      name: "Premium Webinar",
+      class: "premium",
+      icon: "crown",
+      subscribe: "premiumCheckout",
+    },
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<!--  OnClick alert functions  -->
+<script>
+  // Checkout for free events
+  function checkout(title) {
+    Swal.fire({
+      title: 'Success!',
+      text: `Your participation in the event "${ title }" has been successfully confirmed!`,
+      icon: 'success',
+      confirmButtonText: 'Cool!'
+    })
+  }
+
+  // Checkout for premium events
+  function premiumCheckout(title) {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-premium ml-8',
+        cancelButton: 'btn'
+      },
+      buttonsStyling: false,
+    })
+
+    swalWithBootstrapButtons.fire({
+      title: 'You are not premium ',
+      text: "Join our premium community ;)",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'go premium!',
+      cancelButtonText: 'cancel',
+      reverseButtons: true,
+      iconHtml: '<img class="modal-icon" src="https://image.flaticon.com/icons/svg/1657/1657088.svg" />',
+    }).then((result) => {
+      if (result.value) {
+        swalWithBootstrapButtons.fire({
+          title: 'Congratulations',
+          text: 'Now you are part of our premium community :)',
+          iconHtml: '<img class="modal-icon" src="https://image.flaticon.com/icons/svg/1657/1657088.svg" />',
+          icon: 'warning',
+          backdrop: `
+                rgba(0,0,123,0.4)
+                url("https://media2.giphy.com/media/XcR5EzmXLEaKk2YROn/giphy.gif?cid=ecf05e47tdcuuhjc85beqa7ouyhan64m7w6pgh0rmtte76th&rid=giphy.gif")
+                left top
+                no-repeat
+              `
+        })
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        swalWithBootstrapButtons.fire({
+          title: 'Check it out before',
+          html: 'You can see more about the benefits of being premium <a class="modal-link" href="https://vanhack.com/premium" target="_blank">here<a> ',
+          icon: 'warning',
+          iconHtml: '<img class="modal-icon" src="https://image.flaticon.com/icons/svg/1657/1657088.svg" />',
+        })
+      }
+    })
+
+    Swal
+  }
+</script>
+<script src="script.js"></script>
+</body>
 </html>

@@ -396,10 +396,20 @@ input::-webkit-calendar-picker-indicator {
   justify-content: space-between;
 }
 
-.logo{
+#header .logo{
   color: #21AAEB;
   font-weight: 800;
   font-size: 24px;
+}
+
+#header .login{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#header .login button{
+  margin-left: 16px;
 }
 
 
@@ -579,6 +589,17 @@ input::-webkit-calendar-picker-indicator {
   color: var(--premium) !important;
 }
 
+.modal-icon{
+  height: 50px;
+  width: 50px;
+  object-fit: contain;
+}
+
+.modal-link{
+  text-decoration: none;
+  color: var(--premium);
+  font-weight: 800;
+}
 
 
 /* Font Awesome */

@@ -65,7 +65,7 @@ function EventLoader() {
           <span class="title">${item.title}</span>
           <span class="description">${item.description}</span>
         </div>
-        <button class="btn" onclick="${meta.subscribe}">
+        <button class="btn" onclick="${meta.subscribe}('${item.title}')">
           Checkout Now
         </button>
       </div>
@@ -97,14 +97,33 @@ function EventLoader() {
     const mock = await res.json();
 
     localStorage.setItem("events", JSON.stringify(mock));
+    localStorage.setItem("filtered-events", JSON.stringify(mock));
   }
 
-  function filterEventsByQuery(query) {
-    // todo
+  function filterEventsByQuery(param) {
+    const query = param.toLowerCase()
+    const events = JSON.parse(localStorage.getItem('events'))
+    const newEvents = events.filter(event => {
+      const hasTitle = event.title.toLowerCase().includes(query);
+      const hasDescription = event.description.toLowerCase().includes(query);
+      const hasType = event.type.toLowerCase().includes(query);
+
+      return hasTitle || hasDescription || hasType;
+    })
+
+    localStorage.setItem('filtered-events', JSON.stringify(newEvents));
   }
 
-  function filterEventsByType(type) {
-    // todo
+  function filterEventsByType(param) {
+    const type = param.toLowerCase()
+    const events = JSON.parse(localStorage.getItem('events'))
+    const newEvents = events.filter(event => {
+      const hasType = event.type.toLowerCase().includes(type);
+
+      return hasType;
+    })
+
+    localStorage.setItem('filtered-events', JSON.stringify(newEvents));
   }
 
   function filterEventsByDate(date) {
@@ -139,7 +158,7 @@ function EventLoader() {
   // Clears grid elements and renders the data stores in localstorage
   function renderEvents() {
     html.grid.innerHTML = "";
-    const events = JSON.parse(localStorage.getItem("events"));
+    const events = JSON.parse(localStorage.getItem("filtered-events"));
 
     events.forEach((event) => {
       const card = generateCard(event);
