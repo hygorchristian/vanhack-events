@@ -71,7 +71,7 @@ body{
     "hero"
     "events"
   ;
-  padding-top: 80px;
+  padding-top: 110px;
   padding-bottom: 100px;
 }
 
@@ -206,6 +206,7 @@ input, select, textarea{
 .flip-card-back .info{
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
 }
 
 .flip-card-back .info .title{
@@ -221,6 +222,36 @@ input, select, textarea{
   line-height: 18px;
   font-weight: 400;
   text-align: left;
+}
+
+.flip-card-back .info .share{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.flip-card-back .info strong{
+  font-size: 12px;
+  margin-right: 8px;
+}
+
+.flip-card-back .info .btn-share{
+  padding: 4px 8px;
+  background-color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 4px;
+}
+
+.flip-card-back .info .btn-share span{
+  font-size: 12px;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.flip-card-back .info .btn-share span.premium{
+  color: var(--premium);
 }
 
 .flip-card-back button{
@@ -385,6 +416,7 @@ input::-webkit-calendar-picker-indicator {
   top: 0;
   z-index: 100;
   background-color: var(--bg);
+  box-shadow: 0 2px 10px rgba(73, 73, 73, 0.15);
 }
 
 #header .content{

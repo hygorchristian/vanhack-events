@@ -64,6 +64,18 @@ function EventLoader() {
         <div class="info">
           <span class="title">${item.title}</span>
           <span class="description">${item.description}</span>
+          <div class="share">          
+            <strong>Share:</strong>
+            <a href="https://linkedin.com" class="btn-share" target="_blank">
+              <span class="${meta.class}">LinkedIn</span>
+            </a>
+            <a href="https://twitter.com" class="btn-share" target="_blank">
+              <span class="${meta.class}">Twitter</span>
+            </a>
+            <a href="https://facebook.com" class="btn-share" target="_blank">
+              <span class="${meta.class}">Facebook</span>
+            </a>
+          </div>
         </div>
         <button class="btn" onclick="${meta.subscribe}('${item.title}')">
           Checkout Now
