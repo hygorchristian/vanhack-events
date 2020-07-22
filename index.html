@@ -1,8 +1,14 @@
 <html>
   <head>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;400;500;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
     <title>Awesome HTML</title>
 
     <!-- dev: clear this before submit code -->
@@ -16,7 +22,13 @@
           <div class="logo">VanHack Events</div>
           <div class="login">
             <button class="btn">Login</button>
-            <button style="margin-left: 16px" class="btn btn-primary" onclick="showSuccessMessage()">Sign Up</button>
+            <button
+              style="margin-left: 16px;"
+              class="btn btn-primary"
+              onclick="showSuccessMessage()"
+            >
+              Sign Up
+            </button>
           </div>
         </div>
       </header>
@@ -29,28 +41,27 @@
             <span class="label">
               Looking for
             </span>
-            <input class="text-input" type="text" />
+            <input id="filter-query" class="text-input" type="text" />
           </div>
           <div class="item">
             <span class="label">
               Category
             </span>
-            <select class="select">
+            <select id="filter-type" class="select">
               <option value="" disabled selected>Choose</option>
-              <option>MeetUp</option>
-              <option>Leap</option>
-              <option>Recruiting Mission</option>
-              <option>VanHackathon</option>
-              <option>Premium</option>
-              <option>Webinar</option>
-              <option>Open Webinar</option>
+              <option value="meetup">MeetUp</option>
+              <option value="leap">Leap</option>
+              <option value="recruiting">Recruiting Mission</option>
+              <option value="vanhackathon">VanHackathon</option>
+              <option value="premium_webinar">Premium Webinar</option>
+              <option value="webinar">Open Webinar</option>
             </select>
           </div>
           <div class="item">
             <span class="label">
               When
             </span>
-            <input class="text-input" type="date" />
+            <input id="filter-date" class="text-input" type="date" />
           </div>
         </div>
       </section>
@@ -74,6 +85,37 @@
         </div>
       </section>
     </div>
+    <script>
+      const metadata = {
+        meetup: {
+          name: "MeetUp",
+        },
+        leap: {
+          name: "Leap",
+          class: "highlight",
+          icon: "running",
+        },
+        recruiting: {
+          name: "Recruiting Mission",
+          class: "highlight",
+          icon: "search",
+        },
+        vanhackathon: {
+          name: "VanHackathon",
+          class: "highlight",
+          icon: "code",
+        },
+        webinar: {
+          name: "Webinar",
+        },
+        premium_webinar: {
+          name: "Premium Webinar",
+          class: "premium",
+          icon: "crown",
+          subscribe: "premiumSubscribe()",
+        },
+      };
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src="script.js"></script>
   </body>

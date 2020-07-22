@@ -1,162 +1,163 @@
-const metadata = {
-  meetup: {
-    name: 'MeetUp',
-  },
-  leap: {
-    name: 'Leap',
-    class: 'highlight',
-    icon: 'running',
-  },
-  recruiting: {
-    name: 'Recruiting Mission',
-    class: 'highlight',
-    icon: 'search',
-  },
-  vanhackathon: {
-    name: 'VanHackathon',
-    class: 'highlight',
-    icon: 'code',
-  },
-  webinar: {
-    name: 'Webinar'
-  },
-  premium_webinar: {
-    name: 'Premium Webinar',
-    class: 'premium',
-    icon: 'crown',
-    subscribe: 'premiumSubscribe()'
+function EventLoader() {
+  // Get html elements
+  const html = {
+    grid: document.querySelector("#grid"),
+    query: document.querySelector("#filter-query"),
+    type: document.querySelector("#filter-type"),
+    date: document.querySelector("#filter-date"),
+  };
+
+  // Renders the header of cards
+  function renderCardHeader(data) {
+    const meta = metadata[data.type];
+
+    return `
+      <div class="badge ${meta.class}">
+        <span class="badge-label">
+          ${meta.name}
+        </span>
+      </div>
+      <div class="info">
+        ${
+          meta.icon
+            ? `<div class="round ${meta.class}"><i class="fas fa-${meta.icon}"></i></div>`
+            : ""
+        }
+      </div>
+    `;
   }
-}
 
-function renderCardHeader(data){
-  const meta = metadata[data.type];
+  // Renders the front card
+  function renderCardFront(item) {
+    const meta = metadata[item.type];
 
-  return `
-    <div class="badge ${meta.class}">
-      <span class="badge-label">
-        ${meta.name}
-      </span>
-    </div>
-    <div class="info">
-      ${ meta.icon ? `<div class="round ${meta.class}"><i class="fas fa-${meta.icon}"></i></div>` : '' }
-    </div>
-  `
-}
-
-function renderCardFront(item){
-  const meta = metadata[item.type];
-
-  return `
-    <div class="flip-card-front ${meta.class}">
-      <div style="background-image: url('${item.image}')" class="card-header">
-        <div class="card-header-content">
-          ${renderCardHeader(item)}          
+    return `
+      <div class="flip-card-front ${meta.class}">
+        <div style="background-image: url('${item.image}')" class="card-header">
+          <div class="card-header-content">
+            ${renderCardHeader(item)}          
+          </div>
+        </div>
+        <div class="card-content">
+          <div class="date">
+            <span class="month ${meta.class}">SEP</span>
+            <span class="day">18</span>
+          </div>
+          <div class="info">
+            <span class="title">${item.title}</span>
+            <span class="description">${item.description.substr(
+              0,
+              100
+            )}...</span>
+          </div>
         </div>
       </div>
-      <div class="card-content">
-        <div class="date">
-          <span class="month ${meta.class}">SEP</span>
-          <span class="day">18</span>
-        </div>
+    `;
+  }
+
+  // Renders the back card
+  function renderCardBack(item) {
+    const meta = metadata[item.type];
+
+    return `
+      <div class="flip-card-back ${meta.class}">
         <div class="info">
           <span class="title">${item.title}</span>
-          <span class="description">${item.description.substr(0, 100)}...</span>
+          <span class="description">${item.description}</span>
+        </div>
+        <button class="btn" onclick="${meta.subscribe}">
+          Checkout Now
+        </button>
+      </div>
+    `;
+  }
+
+  // Creates a card element
+  function generateCard(item) {
+    const card = document.createElement("div");
+    const html = `
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          ${renderCardFront(item)}
+          ${renderCardBack(item)}        
         </div>
       </div>
-    </div>
-  `
+    `;
+    card.innerHTML = html;
+    return card;
+  }
+
+  // Fetchs events data and saves into localstorage
+  async function fetchAndSaveEvents() {
+    localStorage.setItem("events", "[]");
+    const res = await fetch(
+      "https://raw.githubusercontent.com/hygorchristian/vanhack-events/master/mock.json"
+    );
+
+    const mock = await res.json();
+
+    localStorage.setItem("events", JSON.stringify(mock));
+  }
+
+  function filterEventsByQuery(query) {
+    // todo
+  }
+
+  function filterEventsByType(type) {
+    // todo
+  }
+
+  function filterEventsByDate(date) {
+    // todo
+  }
+
+  function setListeners() {
+    // Query search input
+    html.query.addEventListener("keyup", (event) => {
+      const query = event.target.value;
+      filterEventsByQuery(query);
+      renderEvents();
+    });
+
+    // Select type input
+    html.type.addEventListener("change", (event) => {
+      const type = event.target.value;
+      filterEventsByType(type);
+      console.log(type);
+      renderEvents();
+    });
+
+    // Select type input
+    html.date.addEventListener("change", (event) => {
+      const date = event.target.value;
+      filterEventsByDate(date);
+      console.log(date);
+      renderEvents();
+    });
+  }
+
+  // Clears grid elements and renders the data stores in localstorage
+  function renderEvents() {
+    html.grid.innerHTML = "";
+    const events = JSON.parse(localStorage.getItem("events"));
+
+    events.forEach((event) => {
+      const card = generateCard(event);
+      html.grid.appendChild(card);
+    });
+  }
+
+  // Inits the event loader
+  async function init() {
+    await fetchAndSaveEvents();
+    renderEvents();
+    setListeners();
+  }
+
+  return { init };
 }
 
-function renderCardBack(item){
-  const meta = metadata[item.type];
-
-  return `
-    <div class="flip-card-back ${meta.class}">
-      <div class="info">
-        <span class="title">${item.title}</span>
-        <span class="description">${item.description}</span>
-      </div>
-      <button class="btn" onclick="${meta.subscribe}">
-        Checkout Now
-      </button>
-    </div>
-  `
-}
-
-function generateCard(item) {
-  const card = document.createElement('div');
-  const html = `
-    <div class="flip-card">
-      <div class="flip-card-inner">
-        ${renderCardFront(item)}
-        ${renderCardBack(item)}        
-      </div>
-    </div>
-  `
-  card.innerHTML = html;
-  return card;
-}
-
-async function loadItems() {
-  const grid = document.getElementById('grid');
-  // const res = await fetch('https://raw.githubusercontent.com/hygorchristian/vanhack-events/master/mock.json');
-  const res = await fetch('mock.json');
-  const mock = await res.json();
-
-  mock.forEach(item => {
-    const card = generateCard(item);
-    grid.appendChild(card);
-  })
-}
-
-/* Actions */
-
-function showSuccessMessage() {
-  Swal.fire({
-    icon: 'success',
-    title: 'Your work has been saved',
-    showConfirmButton: false,
-    variant: 'error'
-  })
-}
-
-function premiumSubscribe() {
-  const swalWithBootstrapButtons = Swal.mixin({
-    customClass: {
-      confirmButton: 'btn btn-premium ml-8',
-      cancelButton: 'btn'
-    },
-    buttonsStyling: false,
-    iconHtml: '<span>sdfsdfsdf</span>',
-  })
-
-  swalWithBootstrapButtons.fire({
-    title: 'You are not premium',
-    text: "Join our premium community ;)",
-    iconHtml: '<h1>sdfsdfsdf</h1>',
-    showCancelButton: true,
-    confirmButtonText: 'Become premium!',
-    cancelButtonText: 'No, cancel',
-    reverseButtons: true
-  }).then((result) => {
-    if (result.value) {
-      swalWithBootstrapButtons.fire(
-          'Deleted!',
-          'Your file has been deleted.',
-          'info'
-      )
-    } else if (
-        result.dismiss === Swal.DismissReason.cancel
-    ) {
-      swalWithBootstrapButtons.fire(
-          'Cancelled',
-          'Your imaginary file is safe :)',
-          'info'
-      )
-    }
-  })
-}
-
-(function () {
-  loadItems()
-})()
+window.addEventListener("load", function () {
+  const eventLoader = new EventLoader();
+  eventLoader.init();
+});
